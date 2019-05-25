@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/_template.xhtml">
+	<ui:define name="corpo">
+		<div align="left">
+
+			<p>
+				<span style="font-size: large;"><strong>Esta
+						avalia&ccedil;&atilde;o consiste em:</strong></span>
+			</p>
+			<p>&nbsp;</p>
+			<ol>
+				<li><span style="font-size: medium;">Compreender a
+						estrutura deste projeto MVC, cujos principais pacotes de classes
+						est&atilde;o divididos nos seguintes pacotes: <strong><em>dao</em></strong>,
+						<em><strong>model</strong> </em>e <em><strong>beans</strong></em>.&nbsp;
+				</span></li>
+				<li><span style="font-size: medium;">Completar as
+						funcionalidades abaixo, considerando que as classes contidas nos
+						pacotes <em><strong>dao</strong> </em>e <em><strong>model</strong>
+					</em>est&atilde;o completas e que n&atilde;o h&aacute; necessidade de
+						altera&ccedil;&otilde;es nessas classes.&nbsp;
+				</span></li>
+			</ol>
+			<p>&nbsp;</p>
+			<p>
+				<br /> <span style="font-size: small;"><strong>a)</strong> <strong>Completar o Cadastro de 
+						Disciplinas de um Curso</strong>(disciplinas.xhtml);</span><br />
+				<span style="font-size: small;"><strong>b)</strong> <strong>Cadastrar
+						Alunos</strong>. Observe o modelo do Aluno (Aluno.java) na
+					constru&ccedil;&atilde;o da view (cadastrarAlunos.xhtml).</span><br />
+				<span style="font-size: small;"><strong>  c)</strong> <strong>Matricular
+						Alunos em Disciplinas</strong>. Esta tarefa consiste em associar alunos as
+					disciplinas, em um determinado per&iacute;odo. Implemente da
+					maneira que achar mais conveniente (matricularEmDisciplina.xhtml);</span><br />
+				<span style="font-size: small;"><strong> d)</strong> <strong>Construcao de um Web Service</strong>. 
+					Esta funcionalidade consiste em um servico REST que retornar o numero de alunos por extenso. 
+					Ex.: getNumExtenso(4) return "quatro".</span><br />
+				<span style="font-size: small;"><strong> e)</strong> <strong>Informar
+						Notas dos Alunos</strong>. Esta funcionalidade consiste em escolher uma
+					disciplina de um determinado per&iacute;odo e possibilitar a
+					digita&ccedil;&atilde;o de quaisquer notas dos alunos matriculados
+					na disciplina (digitacaoDeNotas.xhtml).</span>
+			</p>
+			<hr />
+			<p>
+				<br /> <em><strong><span style="font-size: small;">obs:</span></strong></em>
+			</p>
+			<ol>
+				<li><span style="font-size: small;">Classes do pacote
+						"bean" podem ser criadas/alteradas conforme a necessidade.</span></li>
+				<li><span style="font-size: small;">os dados persistidos
+						est&atilde;o sendo armazenados em mem&oacute;ria. Portanto, dados
+						persistidos existiram apenas enquanto o servidor de
+						aplica&ccedil;&atilde;o estiver em execu&ccedil;&atilde;o,
+						juntamente com a aplica&ccedil;&atilde;o.&nbsp;</span></li>
+				<li><span style="font-size: small;">Observe que na
+						interface de listagem de curso, h&aacute; um bot&atilde;o que
+						possibilita a inser&ccedil;&atilde;o (persist&ecirc;ncia) e
+						listagem de alguns cursos para testes.</span></li>
+				<li><span style="font-size: small;">o projeto utiliza
+						CDI para injen&ccedil;&atilde;o de depend&ecirc;ncias, n&atilde;o
+						havendo necessidade de instanciar classes do pacto DAO(Observe
+						como exemplo a clase CursoBean.java).</span></li>
+				<li><span style="font-size: small;">A
+						utiliza&ccedil;&atilde;o de componentes do PrimeFaces &eacute;
+						opcional.</span></li>
+			</ol>
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/_template.xhtml">
+	<ui:define name="corpo">
+		<p>
+			<span style="font-size: large;"><strong>Cadastro de
+					Cursos</strong></span>
+		</p>
+
+		<h:form id="form_itens">
+			<p:dataTable value="#{cursoBean.cursos}" id="tb_cursos" var="curso"
+				paginator="true" rows="10">
+				<p:column headerText="Código">
+					#{curso.codigo}
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{curso.nome}">
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+
+			<br></br>
+			<br></br>
+			<p:commandButton
+				value="CarregarCursos (#{cursoBean.listaTodosCursos().size()})"
+				id="btCursosIniciais" update="form_itens"
+				actionListener="#{cursoBean.carregarCursos()}" icon="ui-icon-disk"
+				styleClass="ui-priority-primary"
+				disabled="#{cursoBean.listaTodosCursos().size() > 0}" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

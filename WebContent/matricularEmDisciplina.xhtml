@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<ui:composition template="/template/_template.xhtml">
+	<ui:define name = "corpo">
+			<p><span style="font-size: large;"><strong>Matrícula em Disciplinas</strong></span></p>
+			<br /><br />
+			<h:form id="formCadastro">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Disciplina: " />
+					<p:selectOneMenu id="disciplina" value="#{matriculaBean.matricula.disciplina}"
+						converter="#{conversorDisciplina}">
+						<f:selectItem itemLabel="Selecione uma disciplina" itemValue="" />
+						<f:selectItems value="#{matriculaBean.disciplinas}" var="dis"
+							itemLabel="#{dis.nomeDisciplina}" itemValue="#{dis}" />
+		
+					</p:selectOneMenu>
+						
+					<h:outputText value="Aluno: " />
+					<p:selectOneMenu id="aluno" value="#{matriculaBean.matricula.aluno}"
+						converter="#{conversorAluno}">
+						<f:selectItem itemLabel="Selecione um aluno" itemValue="" />
+						<f:selectItems value="#{matriculaBean.alunos}" var="aluno"
+							itemLabel="#{aluno.nome}" itemValue="#{aluno}" />
+		
+					</p:selectOneMenu>
+					
+					<h:outputText value="Turno: " />
+					<p:selectOneMenu id="turno" value="#{matriculaBean.matricula.turno}">
+						<f:selectItem itemLabel="Selecione um turno" itemValue="" />
+						<f:selectItem itemLabel="Matutino" itemValue="MATUTINO" />
+						<f:selectItem itemLabel="Vespertino" itemValue="VESPERTINO" />
+						<f:selectItem itemLabel="Noturno" itemValue="NOTURNO" />
+						<f:selectItem itemLabel="Integral" itemValue="INTEGRAL" />
+		
+					</p:selectOneMenu>
+					
+					<f:facet name="footer">
+		
+						<p:commandButton value="Cadastrar" ajax="false" id="criar_obj_button"
+							actionListener="#{matriculaBean.adicionar()}" />
+						<p:commandButton id="limpar_button" value="Limpar"
+								update=":formCadastro, :formCadastro:tb_matriculas" process="@this"
+								actionListener="#{matriculaBean.limpaCampos()}">
+								<p:resetInput target=":formCadastro" />
+						</p:commandButton>
+					</f:facet>
+				</h:panelGrid>
+				
+				<p:dataTable value="#{matriculaBean.matriculas}" id="tb_matriculas" var="matricula"
+						paginator="true" rows="10">
+					<p:column headerText="Disciplina">
+						<h:outputText value="#{matricula.disciplina.nomeDisciplina}">
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Aluno">
+						<h:outputText value="#{matricula.aluno.nome}">
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Turno">
+						<h:outputText value="#{matricula.turno}">
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

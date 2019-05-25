@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/_template.xhtml">
+	<ui:define name="corpo">
+		<p>
+			<span style="font-size: large;"><strong>Cadastro de
+					Disciplinas</strong></span>
+		</p>
+		<br></br>
+		<h:form id="formCadastro">
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputText value="curso: " />
+				<p:selectOneMenu id="car" value="#{disciplinaBean.disciplina.curso}"
+					converter="#{conversorCurso}">
+					<f:selectItem itemLabel="selecione um curso" itemValue="" />
+					<f:selectItems value="#{disciplinaBean.cursos}" var="cur"
+						itemLabel="#{cur.nome}(#{cur.codigo})" itemValue="#{cur}" />
+
+				</p:selectOneMenu>
+
+				<h:outputText value="Nome da Disciplina: " />
+				<p:inputText id="Nome"
+					value="#{disciplinaBean.disciplina.nomeDisciplina}" required="true" />
+
+
+
+
+				<f:facet name="footer">
+
+				<p:commandButton value="Cadastrar" ajax="false" id="criar_obj_button"
+					actionListener="#{disciplinaBean.adicionar()}" />
+				<p:commandButton id="limpar_button" value="Limpar"
+						update=":formCadastro, :formCadastro:tb_disciplinas" process="@this"
+						actionListener="#{disciplinaBean.limpaCampos()}">
+						<p:resetInput target=":formCadastro" />
+					</p:commandButton>
+
+
+				</f:facet>
+			</h:panelGrid>
+
+<br></br>
+<hr />
+<br></br>
+<p:dataTable value="#{disciplinaBean.disciplinas}" id="tb_disciplinas" var="disciplina"
+				paginator="true" rows="10">
+				<p:column headerText="Código">
+					#{disciplina.id}
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{disciplina.nomeDisciplina}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Curso">
+					<h:outputText value="#{disciplina.curso.nome}">
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>
